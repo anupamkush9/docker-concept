@@ -1,0 +1,8 @@
+useless_file
+venv/
+.env
+/.env
+/docker_test_app/migrations/*
+/docker_test_app/__pycache__/*
+/django_pracitice_proj/migrations/*
+/django_pracitice_proj/__pycache__/*
