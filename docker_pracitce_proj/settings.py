@@ -83,14 +83,15 @@ WSGI_APPLICATION = 'docker_pracitce_proj.wsgi.application'
 # }
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'test1',
-       'USER': 'postgres',
-       'PASSWORD': 'password',
-       'HOST': 'db',
-       'PORT': '5432',
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        # 'HOST': '127.0.0.1', 
+        'HOST': 'db',
+        'PORT': 5432
+    }
 }
 
 # Password validation
