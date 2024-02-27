@@ -1,22 +1,29 @@
-
 version: '3'
 
 services:
+  db:
+    image: postgres
+    container_name: postgres_db_container
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5436:5432"  # Map exposed port 5432 to host port 5436 (avoid conflicting ports)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Use a named volume for persistence
 
   web:
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    image: django_docker:latest  # For giving custom image name (By default it will take the dictory name on which docker-compose.yml is placed)
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
     container_name: docker_practice_proj_container
     volumes:
-      - .:/docker_practice_proj
+      - .:/docker_practice_proj  # Mount current directory to /docker_practice_proj in container
     ports:
       - "8000:8000"
     depends_on:
       - db
 
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_DB=test1
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+volumes:
+  postgres_data:  # Define the named volume for database data
