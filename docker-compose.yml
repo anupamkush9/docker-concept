@@ -9,9 +9,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     ports:
-      - "5436:5432"  # Map exposed port 5432 to host port 5436 (avoid conflicting ports)
+      - "5436:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data  # Use a named volume for persistence
+      - postgres_data:/var/lib/postgresql/data
 
   web:
     build: .
@@ -19,7 +19,7 @@ services:
     command: bash -c "python manage.py runserver 0.0.0.0:8000"
     container_name: docker_practice_proj_container
     volumes:
-      - .:/docker_practice_proj  # Mount current directory to /docker_practice_proj in container
+      - .:/docker_practice_proj
     ports:
       - "8000:8000"
     depends_on:
