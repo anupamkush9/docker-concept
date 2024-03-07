@@ -2,14 +2,18 @@
 
 ### For building and running container
 > sudo docker-compose up
+
 or
 > sudo docker-compose -f docker-compose.yml up
 
 
 ### Go inside of container for executing makemigrations and migrate command
 > sudo docker ps
+
 > sudo docker exec -it docker_practice_proj_container bash
+
 > python3 manage.py makemigrations
+
 > python3 manage.py migrate
 
 
