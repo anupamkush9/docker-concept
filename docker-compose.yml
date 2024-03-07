@@ -9,9 +9,11 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     ports:
-      - "5436:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - vpc1
 
   web:
     build: .
@@ -24,6 +26,13 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - vpc1
 
 volumes:
   postgres_data:  # Define the named volume for database data
+
+
+networks:
+  vpc1:
+    driver: bridge
